@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width =device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function getComputerChoice(){
+            array  = ["rock", "paper", "scissors"]
+            choice = array[Math.floor((Math.random()*array.length))]
+            console.log("Computer chose: " + choice)
+            return choice;
+
+        }
+        
+        function start(playerSelection, computerSelection){
+            
+            switch (playerSelection== "rock" || playerSelection == "paper" || playerSelection =="scissors") {                
+                case (computerSelection == playerSelection):
+                    return "Its a tie!"
+                    break
+
+                case (playerSelection == "rock" && computerSelection == "paper" ) || (computerSelection == "rock" && playerSelection == "scissors") || (computerSelection == "scissors" && playerSelection == "paper"):
+                    return "You lose"
+                    break
+            
+                case (computerSelection == "paper" && playerSelection == "scissors") || (computerSelection == "rock" && playerSelection == "paper") || (computerSelection == "scissors" && playerSelection == "rock"):
+                    return "You win"
+                    break
+
+                default:
+                    return "invalid"
+                    break
+
+            }
+        }       
+        let playerSelection = prompt("ROCK, PAPER or SCISSORS")
+        let computerSelection = getComputerChoice()
+        console.log(start(playerSelection, computerSelection))
+
+
+
+    </script>
+</body>
+</html>
+
+
