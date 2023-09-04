@@ -1,3 +1,8 @@
+let playerscore = 0;
+let computerscore = 0;
+let roundsplayed=0
+
+
 //returning a random option 
 function getComputerChoice(){
     array  = ["rock", "paper", "scissors"]
@@ -8,12 +13,17 @@ function getComputerChoice(){
 }
 
 function getPlayerChoice (b){
-    let playerchoice = b
-    console.log("You chose: " +playerchoice)
+    console.log("You chose: " +b)
 
     let playerSelection = b
     let computerSelection = getComputerChoice()
     console.log(start(playerSelection, computerSelection))
+    roundsplayed++
+
+    if (roundsplayed ==5){
+        console.log("Game is over! You score: " +playerscore + ". Computer score: " +computerscore+ ".")
+        resetgame();
+    }
 
 }
 
@@ -31,18 +41,24 @@ button3.addEventListener("click", function(){getPlayerChoice("scissors")});
 
 
 function start(playerSelection, computerSelection){
-        
-    if (computerSelection == playerSelection){
-        return "Its a tie!"
-    } else if ((playerSelection == "rock" && computerSelection == "paper" ) || (computerSelection == "rock" && playerSelection == "scissors") || (computerSelection == "scissors" && playerSelection == "paper")){
-        return "You Lose"
-    } else if ((computerSelection == "paper" && playerSelection == "scissors") || (computerSelection == "rock" && playerSelection == "paper") || (computerSelection == "scissors" && playerSelection == "rock")){
-        return "You win"
-    } else {
-        return ("Wrong option")
-    }
-}       
+        if (computerSelection == playerSelection){
+            return "Its a tie!"
+        } else if ((playerSelection == "rock" && computerSelection == "paper" ) || (computerSelection == "rock" && playerSelection == "scissors") || (computerSelection == "scissors" && playerSelection == "paper")){
+            computerscore++
+            return "You Lose"
+            
+        } else if ((computerSelection == "paper" && playerSelection == "scissors") || (computerSelection == "rock" && playerSelection == "paper") || (computerSelection == "scissors" && playerSelection == "rock")){
+            playerscore++
+            return "You win"
+        } else {
+            return ("Wrong option")
+        }
+} 
 
 
-
-
+function resetgame(){
+    playerscore = 0;
+    computerscore = 0;
+    roundsplayed=0;
+    console.log ("game reset")
+}
